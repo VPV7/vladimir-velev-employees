@@ -10,12 +10,12 @@ import java.util.stream.Stream;
 
 public class Parser {
 
-    public static List<Employee> readEmployees(String path) {
+    public static List<EmployeeWorkPeriod> readPeriods(String path) {
         try (Stream<String> stream = Files.lines(Paths.get(path))) {
             return stream.map(line -> {
                 String[] employeeData = line.split(",");
                 if (employeeData.length == 4) {
-                    return new Employee(employeeData[0].trim(),
+                    return new EmployeeWorkPeriod(employeeData[0].trim(),
                             employeeData[1].trim(),
                             parseDate(employeeData[2].trim()),
                             parseDate(employeeData[3].trim()));
